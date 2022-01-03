@@ -1,0 +1,36 @@
+body {
+  top: 0;
+  margin: 0;
+}
+#header {
+  background-color: grey;
+  height: 70px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: sticky;
+}
+#header > button {
+  font-size: xx-large;
+  background-color: grey;
+  border: 0;
+}
+#product {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#product > div {
+  height: 400px;
+  width: 350px;
+  text-align: center;
+}
+#product > div > div {
+  height: 70%;
+  width: 100%;
+}
+#product > div > div > img {
+  height: 100%;
+  width: 100%;
+}
