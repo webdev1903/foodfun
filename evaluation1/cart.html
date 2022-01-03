@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cartitems{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        #cartitems > div{
+            height: 400px;
+            width: 350px;
+            text-align: center;
+
+        }
+        #cartitems > div > div{
+            height: 70%;
+            width: 100%;
+        }
+        #cartitems > div > div > img{
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Cart</h1>
+    <div id="cartitems"></div>
+    <div id="total">
+        
+    </div>
+</div>
+</body>
+</html>
+<script>
+    let cartarr = JSON.parse(localStorage.getItem("cartarr"));
+    displaycart(cartarr);
+    function displaycart(arr){
+        arr.map(function(elem,index){
+            let maindiv = document.createElement("div");
+            let imgdiv = document.createElement("div");
+            let image = document.createElement("Img");
+            image.src = elem.img;
+            let title = document.createElement("h3");
+            title.textContent = elem.title;
+            let mrp = document.createElement("p");
+            mrp.textContent = elem.mrp;
+            let rem = document.createElement("button");
+            rem.textContent = "Remove";
+            rem.addEventListener("click",function(){
+                // let i = index;
+                // console.log(i);
+                // removeitem(i);
+                removeitem(index);
+            })
+            imgdiv.append(image);
+            maindiv.append(imgdiv, title,mrp,rem);
+            document.querySelector("#cartitems").append(maindiv);
+        })
+    }
+    function removeitem(i){
+        cartarr.splice(i,1);
+        localStorage.setItem("cartarr",JSON.stringify(cartarr));
+        document.querySelector("#cartitems").innerHTML = "";
+        displaycart(cartarr);
+    }
+
+
+</script>
